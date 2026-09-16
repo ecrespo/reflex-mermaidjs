@@ -38,10 +38,7 @@ jobs:
         id: version
         run: |
           set -euo pipefail
-          version=$(uv run --no-project python -c "
-          import tomllib, pathlib
-          print(tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'])
-          ")
+          version=$(uv version --short)
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "Packaged version: $version"
           if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
