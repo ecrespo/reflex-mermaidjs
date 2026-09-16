@@ -57,6 +57,9 @@ jobs:
           uv run pytest
           uv run bandit -c pyproject.toml -r . -ll
 
+      - name: Validate trove classifiers
+        run: uv run --no-project --python 3.12 --with trove-classifiers python scripts/check_classifiers.py
+
       - name: Build sdist + wheel
         run: uv build
 
