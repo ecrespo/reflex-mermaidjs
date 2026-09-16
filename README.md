@@ -204,7 +204,7 @@ The `mermaidjs_demo/` app is a mermaid.live-style editor built with this compone
 - **API** — props table generated from the source
 
 ```bash
-uv venv && uv pip install -e ".[dev]"
+uv sync --all-groups
 cd mermaidjs_demo
 uv run reflex run
 ```
@@ -212,10 +212,21 @@ uv run reflex run
 ## Development
 
 ```bash
-uv pip install -e ".[dev]"
-uv run pytest
+uv sync --all-groups
+
+uv run pytest                   # tests
+uv run ruff check .             # lint
+uv run ruff format .            # format
+uv run bandit -c pyproject.toml -r . -ll   # SAST
+
 uv run reflex component build   # generates .pyi stubs and builds dist/
 ```
+
+The same checks run in CI on every push and pull request — see the
+[Quality](.github/workflows/quality.yml) and
+[Security](.github/workflows/security.yml) workflows. Releases are tag-driven
+and documented in [RELEASING.md](RELEASING.md); the security posture of the
+component is documented in [SECURITY.md](SECURITY.md).
 
 ## License
 
