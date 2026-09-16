@@ -1,5 +1,8 @@
 """reflex-mermaidjs: mermaid-js diagrams for Reflex."""
 
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _package_version
+
 from . import actions
 from .actions import (
     copy_svg,
@@ -44,7 +47,12 @@ from .urls import (
     serialize_state,
 )
 
-__version__ = "0.1.0"
+# pyproject.toml is the single source of truth for the version; read it back
+# from the installed metadata so the two can never drift.
+try:
+    __version__ = _package_version("reflex-mermaidjs")
+except PackageNotFoundError:  # pragma: no cover - source tree without an install
+    __version__ = "0.0.0.dev0"
 
 __all__ = [
     "DIAGRAM_KEYWORDS",
