@@ -14,10 +14,17 @@ keywords = ["reflex", "reflex-custom-components", "mermaid", "mermaid-js", "diag
 dependencies = ["reflex>=0.9.11"]
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Framework :: Reflex",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Multimedia :: Graphics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
 ]
 
 [project.urls]
@@ -58,6 +65,10 @@ ignore = [
     "RUF012",  # Reflex State class attrs are intentionally mutable defaults
     "RUF001",  # "Mermaid × Reflex" and "·" separators are deliberate typography
 ]
+
+[tool.ruff.lint.isort]
+# tomllib is stdlib on 3.11+; the py310 target alone would sort it as third-party.
+extra-standard-library = ["tomllib"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
