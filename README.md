@@ -22,7 +22,7 @@ pip install reflex-mermaidjs
 uv add reflex-mermaidjs
 ```
 
-Requires `reflex>=0.9.11`. npm dependencies (mermaid, plugins, icons) are installed automatically by Reflex.
+Requires Python 3.11+ and `reflex>=0.10.0` (Reflex 0.10 dropped Python 3.10). npm dependencies (mermaid, plugins, icons) are installed automatically by Reflex.
 
 ## Quick start
 

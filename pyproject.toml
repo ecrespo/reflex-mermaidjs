@@ -1,24 +1,23 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=78.1.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "reflex-mermaidjs"
-version = "0.1.0"
+version = "0.2.0"
 description = "Reflex custom component for mermaid-js: flowcharts, sequence, class, ER, gantt, mindmap and 30+ diagram types from text, with pan & zoom, themes, export and events"
 readme = "README.md"
 license = { text = "MIT" }
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 authors = [{ name = "Ernesto Crespo", email = "ecrespo@gmail.com" }]
 keywords = ["reflex", "reflex-custom-components", "mermaid", "mermaid-js", "diagrams", "flowchart", "uml"]
-dependencies = ["reflex>=0.9.11"]
+dependencies = ["reflex>=0.10.0"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -44,7 +43,7 @@ addopts = "-q --strict-markers"
 
 [tool.ruff]
 line-length = 110
-target-version = "py310"
+target-version = "py311"
 extend-exclude = [".web", "reflex.lock"]
 
 [tool.ruff.lint]
@@ -65,10 +64,6 @@ ignore = [
     "RUF012",  # Reflex State class attrs are intentionally mutable defaults
     "RUF001",  # "Mermaid × Reflex" and "·" separators are deliberate typography
 ]
-
-[tool.ruff.lint.isort]
-# tomllib is stdlib on 3.11+; the py310 target alone would sort it as third-party.
-extra-standard-library = ["tomllib"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
