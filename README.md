@@ -219,7 +219,8 @@ uv run ruff check .             # lint
 uv run ruff format .            # format
 uv run bandit -c pyproject.toml -r . -ll   # SAST
 
-uv run reflex component build   # generates .pyi stubs and builds dist/
+uv run python -m reflex_base.utils.pyi_generator custom_components/reflex_mermaidjs  # regenerate .pyi stubs
+uv build                        # builds dist/ (sdist + wheel)
 ```
 
 The same checks run in CI on every push and pull request — see the
