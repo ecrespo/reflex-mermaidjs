@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-24
+
 ### Changed
 
 - Docs: replace the `reflex component build` / `share` commands, removed in
@@ -37,6 +39,7 @@ All notable changes to this project are documented here. The format follows
   copy, get SVG), Iconify / Font Awesome icons, KaTeX math, `rx.markdown`
   integration, share-URL helpers and 36 sample diagram types.
 
-[Unreleased]: https://github.com/ecrespo/reflex-mermaidjs/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ecrespo/reflex-mermaidjs/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/ecrespo/reflex-mermaidjs/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/ecrespo/reflex-mermaidjs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ecrespo/reflex-mermaidjs/releases/tag/v0.1.0
