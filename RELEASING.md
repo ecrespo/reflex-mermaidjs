@@ -8,8 +8,10 @@ No API token is stored anywhere — PyPI authenticates the workflow over OIDC.
 
 ### 1. Register the Trusted Publisher on PyPI
 
-`reflex-mermaidjs` is not on PyPI yet, so this is a **pending** publisher.
-Go to <https://pypi.org/manage/account/publishing/> and fill in:
+Already done: `reflex-mermaidjs` has been on PyPI since v0.1.0 and its
+Trusted Publisher is active. The values below are kept for reference (e.g. if
+the workflow file or environment is ever renamed). Go to
+<https://pypi.org/manage/account/publishing/> and fill in:
 
 | Field | Value |
 | --- | --- |
@@ -23,8 +25,8 @@ The environment name is not optional here — `release.yml` runs its publish job
 in the `pypi` environment, and PyPI rejects the OIDC token if the claim does not
 match what is registered.
 
-Once the first release uploads, the pending publisher is converted into a normal
-one automatically; nothing further to do.
+For a brand-new project this is registered as a *pending* publisher, which PyPI
+converts into a normal one when the first release uploads.
 
 ### 2. Create the `pypi` environment on GitHub
 
@@ -47,11 +49,19 @@ uv run pytest
 uv run bandit -c pyproject.toml -r . -ll
 uv build && uvx twine check --strict dist/*
 
-# 3. Commit, tag and push.
+# 3. Commit on a branch and open a PR — `main` is protected.
+git switch -c release/v$(uv version --short)
 git commit -am "release: v$(uv version --short)"
+git push -u origin HEAD
+gh pr create --base main --fill
+
+# 4. Once CI is green and the PR is merged, tag the merge commit on main.
+git switch main && git pull --ff-only
 git tag "v$(uv version --short)"
-git push && git push --tags
+git push origin "v$(uv version --short)"
 ```
+
+Record the release in [CHANGELOG.md](CHANGELOG.md) as part of step 1.
 
 The workflow then:
 
