@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reflex-mermaidjs"
-version = "0.2.0"
+version = "0.2.1"
 description = "Reflex custom component for mermaid-js: flowcharts, sequence, class, ER, gantt, mindmap and 30+ diagram types from text, with pan & zoom, themes, export and events"
 readme = "README.md"
 license = { text = "MIT" }
