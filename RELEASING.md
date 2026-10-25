@@ -77,17 +77,24 @@ Run the workflow manually from the Actions tab with **dry_run** left checked.
 It performs every step up to and including the build and metadata check, then
 stops before the publish and release jobs.
 
-## After the first PyPI release
+## Type stubs
 
-Register the component in the Reflex gallery (optional, one-time):
+`custom_components/reflex_mermaidjs/mermaidjs.pyi` is committed and shipped as
+is. Regenerate it whenever the component's props change:
 
 ```bash
-uv run reflex login
-uv run reflex component share
+uv run python -m reflex_base.utils.pyi_generator custom_components/reflex_mermaidjs
 ```
 
-It asks for the published package name (`reflex-mermaidjs`), and optionally a
-preview image and a demo URL.
+This replaces `reflex component build`, which Reflex 0.10 removed together
+with the rest of the `reflex component` CLI.
+
+## Reflex gallery
+
+`reflex component share` was removed in Reflex 0.10 and there is no CLI
+replacement. The gallery tracks the package name rather than a version, so an
+already-registered package needs nothing per release; for a new listing, see
+the current Reflex documentation.
 
 ## Notes
 
